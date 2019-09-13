@@ -1,14 +1,3 @@
-`PyPI version <https://badge.fury.io/py/mail-parser>`__ `Build
-Status <https://travis-ci.org/SpamScope/mail-parser>`__ `Coverage
-Status <https://coveralls.io/github/SpamScope/mail-parser?branch=develop>`__
-`BCH compliance <https://bettercodehub.com/>`__
-` <https://microbadger.com/images/fmantuano/spamscope-mail-parser>`__
-
-.. figure:: https://raw.githubusercontent.com/SpamScope/spamscope/develop/docs/logo/spamscope.png
-   :alt: SpamScope
-
-   SpamScope
-
 mail-parser
 ===========
 

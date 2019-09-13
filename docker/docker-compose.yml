@@ -5,6 +5,6 @@ services:
   mailparser:
     image: fmantuano/spamscope-mail-parser:develop
     command: --json -f /mails/mail_test_1
-    container_name: mailparser
+    container_name: composer_mailparser
     volumes:
       - ~/mails/:/mails/:ro

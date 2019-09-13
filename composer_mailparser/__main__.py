@@ -22,7 +22,7 @@ import os
 import runpy
 import sys
 
-import mailparser
+import composer_mailparser
 from .exceptions import MailParserOutlookError
 from .utils import (
     custom_log,
@@ -199,16 +199,16 @@ def main():
     if args.file:
         if args.outlook:
             log.debug("Analysis Outlook mail")
-            parser = mailparser.parse_from_file_msg(args.file)
+            parser = composer_mailparser.parse_from_file_msg(args.file)
         else:
-            parser = mailparser.parse_from_file(args.file)
+            parser = composer_mailparser.parse_from_file(args.file)
     elif args.string:
-        parser = mailparser.parse_from_string(args.string)
+        parser = composer_mailparser.parse_from_string(args.string)
     elif args.stdin:
         if args.outlook:
             raise MailParserOutlookError(
                 "You can't use stdin with msg Outlook")
-        parser = mailparser.parse_from_file_obj(sys.stdin)
+        parser = composer_mailparser.parse_from_file_obj(sys.stdin)
 
     if args.json:
         safe_print(parser.mail_json)

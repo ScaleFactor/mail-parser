@@ -32,7 +32,7 @@ import hashlib
 import logging
 import os
 import re
-import simplejson as json
+import json
 import subprocess
 import sys
 import tempfile
@@ -45,7 +45,7 @@ from .const import (
     OTHERS_PARTS,
     RECEIVED_COMPILED_LIST)
 
-from .exceptions import MailParserOSError, MailParserReceivedParsingError
+from .exceptions import ComposerMailParserOSError, ComposerMailParserReceivedParsingError
 
 
 log = logging.getLogger(__name__)
@@ -231,7 +231,7 @@ def msgconvert(email):
     except OSError:
         message = "To use this function you must install 'msgconvert' tool"
         log.exception(message)
-        raise MailParserOSError(message)
+        raise ComposerMailParserOSError(message)
 
     else:
         stdoutdata, _ = out.communicate()
@@ -250,7 +250,7 @@ def parse_received(received):
         received {str} -- single received header
 
     Raises:
-        MailParserReceivedParsingError -- Raised when a
+        ComposerMailParserReceivedParsingError -- Raised when a
             received header cannot be parsed
 
     Returns:
@@ -272,7 +272,7 @@ def parse_received(received):
             msg = "More than one match found for %s in %s" % (
                 pattern.pattern, received)
             log.error(msg)
-            raise MailParserReceivedParsingError(msg)
+            raise ComposerMailParserReceivedParsingError(msg)
         else:
             # otherwise we have one matching clause!
             log.debug("Found one match for %s in %s" % (
@@ -289,7 +289,7 @@ def parse_received(received):
         # we weren't able to match anything...
         msg = "Unable to match any clauses in %s" % (received)
         log.error(msg)
-        raise MailParserReceivedParsingError(msg)
+        raise ComposerMailParserReceivedParsingError(msg)
     return values_by_clause
 
 
@@ -315,7 +315,7 @@ def receiveds_parsing(receiveds):
         try:
             # try to parse the current received header...
             values_by_clause = parse_received(received)
-        except MailParserReceivedParsingError:
+        except ComposerMailParserReceivedParsingError:
             # if we can't, let's append the raw
             parsed.append({'raw': received})
         else:

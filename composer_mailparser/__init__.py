@@ -18,8 +18,8 @@ limitations under the License.
 """
 
 
-from .mailparser import (
-    MailParser,
+from .composer_mailparser import (
+    ComposerMailParser,
     parse_from_bytes,
     parse_from_file,
     parse_from_file_msg,

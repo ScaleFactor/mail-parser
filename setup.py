@@ -32,23 +32,23 @@ with open(os.path.join(current, 'requirements.txt')) as f:
     requires = f.read().splitlines()
 
 __version__ = runpy.run_path(
-    os.path.join(current, "mailparser", "version.py"))["__version__"]
+    os.path.join(current, "composer_mailparser", "version.py"))["__version__"]
 
 
 setup(
-    name='mail-parser',
-    description="Wrapper for email standard library",
+    name='composer_mailparser',
+    description="Composer friendly Wrapper for email standard library",
     license="Apache License, Version 2.0",
-    url="https://github.com/SpamScope/mail-parser",
+    url="https://github.com/ScaleFactor/composer-mail-parser",
     long_description=long_description,
     version=__version__,
-    author="Fedele Mantuano",
-    author_email="mantuano.fedele@gmail.com",
-    maintainer="Fedele Mantuano",
-    maintainer_email='mantuano.fedele@gmail.com',
-    packages=["mailparser"],
+    author="Kevin Liu",
+    author_email="kevinliu@scalefactor.com",
+    maintainer="Kevin Liu",
+    maintainer_email="kevinliu@scalefactor.com",
+    packages=["composer_mailparser"],
     platforms=["Linux"],
-    keywords=['mail', 'email', 'parser', 'wrapper'],
+    keywords=['mail', 'email', 'parser', 'wrapper', 'composer'],
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Intended Audience :: Developers",
@@ -66,5 +66,5 @@ setup(
     ],
     install_requires=requires,
     entry_points={'console_scripts': [
-        'mailparser = mailparser.__main__:main']},
+        'composer_mailparser = composer_mailparser.__main__:main']},
 )
