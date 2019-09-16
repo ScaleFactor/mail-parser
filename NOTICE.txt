@@ -11,3 +11,12 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+
+MODIFICATIONS:
+
+In order to use this library successfully in Google Composer,
+we need to replace the dependency simplejson with json.
+
+Furthermore, we rename the library and all its classes to avoid
+namespace clashing and readability confusion.
