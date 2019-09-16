@@ -1,7 +1,6 @@
 coverage
 flake8
 ipaddress
-simplejson
 six
 tox
 twine
