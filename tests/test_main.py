@@ -28,7 +28,7 @@ sys.path.append(root)
 
 logging.getLogger().addHandler(logging.NullHandler())
 
-from mailparser.__main__ import get_args
+from composer_mailparser.__main__ import get_args
 
 
 class TestMain(unittest.TestCase):

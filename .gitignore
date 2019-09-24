@@ -8,7 +8,7 @@
 *.pyc
 build/
 dist/
-mail_parser.egg-info/
+composer_mail_parser.egg-info/
 venv
 venv3
 report/

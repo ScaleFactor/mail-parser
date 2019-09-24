@@ -45,12 +45,12 @@ install:
 
 # command to run tests
 script:
-    - coverage run --source=mailparser/ --omit=mailparser/__main__.py tests/test_mail_parser.py
+    - coverage run --source=composer_mailparser/ --omit=composer_mailparser/__main__.py tests/test_mail_parser.py
     - python tests/test_main.py
-    - python -m mailparser -v
-    - python -m mailparser -h
-    - python -m mailparser -f tests/mails/mail_malformed_3 -j
-    - cat tests/mails/mail_malformed_3 | python -m mailparser -k -j
+    - python -m composer_mailparser -v
+    - python -m composer_mailparser -h
+    - python -m composer_mailparser -f tests/mails/mail_malformed_3 -j
+    - cat tests/mails/mail_malformed_3 | python -m composer_mailparser -k -j
 
 after_success:
     - coveralls

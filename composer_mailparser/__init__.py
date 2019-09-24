@@ -17,7 +17,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-__version__ = "3.9.3"
 
-if __name__ == "__main__":
-    print(__version__)
+from .composer_mailparser import (
+    ComposerMailParser,
+    parse_from_bytes,
+    parse_from_file,
+    parse_from_file_msg,
+    parse_from_file_obj,
+    parse_from_string)
+
+from .utils import get_header

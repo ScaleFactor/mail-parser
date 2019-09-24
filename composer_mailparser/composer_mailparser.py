@@ -24,7 +24,7 @@ import os
 
 import ipaddress
 import six
-import simplejson as json
+import json
 
 from .const import (
     ADDRESSES_HEADERS,
@@ -44,7 +44,7 @@ from .utils import (
     receiveds_parsing,
 )
 
-from .exceptions import MailParserEnvironmentError
+from .exceptions import ComposerMailParserEnvironmentError
 
 
 log = logging.getLogger(__name__)
@@ -58,9 +58,9 @@ def parse_from_file_obj(fp):
         fp (file-like object): file-like object of raw email
 
     Returns:
-        Instance of MailParser with raw email parsed
+        Instance of ComposerMailParser with raw email parsed
     """
-    return MailParser.from_file_obj(fp)
+    return ComposerMailParser.from_file_obj(fp)
 
 
 def parse_from_file(fp):
@@ -71,9 +71,9 @@ def parse_from_file(fp):
         fp (string): file path of raw email
 
     Returns:
-        Instance of MailParser with raw email parsed
+        Instance of ComposerMailParser with raw email parsed
     """
-    return MailParser.from_file(fp)
+    return ComposerMailParser.from_file(fp)
 
 
 def parse_from_file_msg(fp):
@@ -84,9 +84,9 @@ def parse_from_file_msg(fp):
         fp (string): file path of raw Outlook email
 
     Returns:
-        Instance of MailParser with raw email parsed
+        Instance of ComposerMailParser with raw email parsed
     """
-    return MailParser.from_file_msg(fp)
+    return ComposerMailParser.from_file_msg(fp)
 
 
 def parse_from_string(s):
@@ -97,9 +97,9 @@ def parse_from_string(s):
         s (string): raw email
 
     Returns:
-        Instance of MailParser with raw email parsed
+        Instance of ComposerMailParser with raw email parsed
     """
-    return MailParser.from_string(s)
+    return ComposerMailParser.from_string(s)
 
 
 def parse_from_bytes(bt):
@@ -110,16 +110,16 @@ def parse_from_bytes(bt):
         bt (bytes-like object): raw email as bytes-like object
 
     Returns:
-        Instance of MailParser with raw email parsed
+        Instance of ComposerMailParser with raw email parsed
     """
-    return MailParser.from_bytes(bt)
+    return ComposerMailParser.from_bytes(bt)
 
 
-class MailParser(object):
+class ComposerMailParser(object):
     """
-    MailParser package provides a standard parser that understands
+    ComposerMailParser package provides a standard parser that understands
     most email document structures like official email package.
-    MailParser handles the encoding of email and split the raw email for you.
+    ComposerMailParser handles the encoding of email and split the raw email for you.
 
     Headers:
     https://www.iana.org/assignments/message-headers/message-headers.xhtml
@@ -150,7 +150,7 @@ class MailParser(object):
             fp (file-like object): file-like object of raw email
 
         Returns:
-            Instance of MailParser
+            Instance of ComposerMailParser
         """
         log.debug("Parsing email from file object")
         try:
@@ -174,7 +174,7 @@ class MailParser(object):
             is_outlook (boolean): if True is an Outlook email
 
         Returns:
-            Instance of MailParser
+            Instance of ComposerMailParser
         """
         log.debug("Parsing email from file {!r}".format(fp))
 
@@ -197,7 +197,7 @@ class MailParser(object):
             fp (string): file path of raw Outlook email
 
         Returns:
-            Instance of MailParser
+            Instance of ComposerMailParser
         """
         log.debug("Parsing email from file Outlook")
         f, _ = msgconvert(fp)
@@ -212,7 +212,7 @@ class MailParser(object):
             s (string): raw email
 
         Returns:
-            Instance of MailParser
+            Instance of ComposerMailParser
         """
 
         log.debug("Parsing email from string")
@@ -228,11 +228,11 @@ class MailParser(object):
             bt (bytes-like object): raw email as bytes-like object
 
         Returns:
-            Instance of MailParser
+            Instance of ComposerMailParser
         """
         log.debug("Parsing email from bytes")
         if six.PY2:
-            raise MailParserEnvironmentError(
+            raise ComposerMailParserEnvironmentError(
                 "Parsing from bytes is valid only for Python 3.x version")
         message = email.message_from_bytes(bt)
         return cls(message)
@@ -312,7 +312,7 @@ class MailParser(object):
         This method parses the raw email and makes the tokens.
 
         Returns:
-            Instance of MailParser with raw email parsed
+            Instance of ComposerMailParser with raw email parsed
         """
 
         if not self.message:

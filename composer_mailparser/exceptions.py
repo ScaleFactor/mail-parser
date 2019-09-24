@@ -19,43 +19,43 @@ limitations under the License.
 
 
 __all__ = (
-    "MailParserError",
-    "MailParserOutlookError",
-    "MailParserEnvironmentError",
-    "MailParserOSError",
-    "MailParserReceivedParsingError"
+    "ComposerMailParserError",
+    "ComposerMailParserOutlookError",
+    "ComposerMailParserEnvironmentError",
+    "ComposerMailParserOSError",
+    "ComposerMailParserReceivedParsingError"
 )
 
 
-class MailParserError(Exception):
+class ComposerMailParserError(Exception):
     """
     Base MailParser Exception
     """
     pass
 
 
-class MailParserOutlookError(MailParserError):
+class ComposerMailParserOutlookError(ComposerMailParserError):
     """
     Raised when there is an error with Outlook integration
     """
     pass
 
 
-class MailParserEnvironmentError(MailParserError):
+class ComposerMailParserEnvironmentError(ComposerMailParserError):
     """
     Raised when the environment is not correct
     """
     pass
 
 
-class MailParserOSError(MailParserError):
+class ComposerMailParserOSError(ComposerMailParserError):
     """
     Raised when there is an OS error
     """
     pass
 
 
-class MailParserReceivedParsingError(MailParserError):
+class ComposerMailParserReceivedParsingError(ComposerMailParserError):
     """
     Raised when a received header cannot be parsed
     """
